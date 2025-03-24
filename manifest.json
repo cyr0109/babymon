@@ -22,6 +22,10 @@
       "js": ["ticket.js"]
     },
     {
+      "matches": ["https://ticket-training.onrender.com/"], 
+      "js": ["game_test.js"]
+    },
+    {
       "matches": ["https://ticket-training.onrender.com/presale"], 
       "js": ["login_test.js"]
     },
