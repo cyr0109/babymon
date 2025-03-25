@@ -1,5 +1,10 @@
-const price = '5800';  // 設定價格條件
-const seats = ['特四區', '特一區', '特二區', '特三區', '橙2B-1', '黃2B-2', '黃2B-1', '橙2B-2'];   // 設定可點擊的座位區名稱
+// 持修測試專用
+const price = '2180';  // 設定價格條件
+const seats = ['2樓D區', '2樓E區', '2樓C區', '3樓A區' ,'3樓F區'];   // 設定可點擊的座位區名稱，確保優先選擇 '2樓E區' 等
+
+// 寶怪座位設定
+// const price = '5800';  // 設定價格條件
+// const seats = ['特四區', '特一區', '特二區', '特三區', '橙2B-1', '黃2B-2', '黃2B-1', '橙2B-2'];   // 設定可點擊的座位區名稱
 
 let clicked = false;  // 設定一個變數來標記是否已經點擊過
 
@@ -17,7 +22,8 @@ document.querySelectorAll('.zone-label').forEach(label => {
                     zoneList.querySelectorAll('li a').forEach(seatLabel => {
                         const seatText = seatLabel.innerText.trim(); // 讀取座位名稱
                         if (seatText.includes(seat) && !seatLabel.innerText.includes('已售完')) {
-                            seatLabel.click();
+                            // seatLabel.click();
+                            HTMLElement.prototype.click.call(seatLabel);
                             clicked = true;  // 標記為已點擊，避免繼續執行
                             return;  // 退出內層迴圈
                         }
