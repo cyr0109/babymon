@@ -23,7 +23,7 @@ function reloadAtTaiwanTime(hour, minute, second, millisecond = 0) {
     }, timeUntilReload);
 }
 
-reloadAtTaiwanTime(10, 59, 59, 500);
+reloadAtTaiwanTime(10, 59, 59, 500); // reload 的時機
 
 button = document.querySelector('.btn.btn-primary.text-bold.m-0');
 HTMLElement.prototype.click.call(button);

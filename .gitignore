@@ -1,0 +1,5 @@
+# 忽略 captchas.html 文件
+captchas.html
+
+# 忽略 captchas 資料夾及其所有內容
+captchas/
