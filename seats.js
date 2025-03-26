@@ -1,37 +1,41 @@
 // 持修測試專用
-// const price = '2180';  // 設定價格條件
-// const seats = ['2樓D區', '2樓E區', '2樓C區', '3樓A區' ,'3樓F區'];   // 設定可點擊的座位區名稱，確保優先選擇 '2樓E區' 等
+// const prices = ['2980'];  // 設定價格條件
+// const seats = ['特B區'];   // 設定可點擊的座位區名稱，確保優先選擇
 
 // 寶怪座位設定
-const price = '5800';  // 設定價格條件
-const seats = ['特四區', '特一區', '特二區', '特三區', '橙2B-1', '黃2B-2', '黃2B-1', '橙2B-2'];   // 設定可點擊的座位區名稱
+const prices = ['6800', '5800', '4800', '4300', '3800', '2800'];  // 設定價格條件
+const seats = ['特四區', '特一區', '特二區', '特三區', '橙2B-1', '黃2B-2', '黃2B-1', '橙2B-2', '藍4B-1區', '藍4B-2區', '藍2B-1區', '藍2B-2區'];   // 設定可點擊的座位區名稱
 
-let clicked = false;  // 設定一個變數來標記是否已經點擊過
+let clicked = false;
 
 document.querySelectorAll('.zone-label').forEach(label => {
-    if (clicked) return;  // 如果已經點擊過，直接跳出該區域的處理邏輯
+    if (clicked)return
+    if (!prices.some(price => label.innerHTML.includes(price))) return;
 
-    if (label.innerHTML.includes(price)) {
-        const dataId = label.getAttribute('data-id');
-        if (dataId) {
-            const zoneList = document.querySelector('#' + dataId);
-            if (zoneList) {
-                seats.forEach(seat => {
-                    if (clicked) return;  // 如果已經點擊過，跳過後續座位處理
-
-                    zoneList.querySelectorAll('li a').forEach(seatLabel => {
-                        const seatText = seatLabel.innerText.trim(); // 讀取座位名稱
-                        if (seatText.includes(seat) && !seatLabel.innerText.includes('已售完')) {
-                            // seatLabel.click();
-                            HTMLElement.prototype.click.call(seatLabel);
-                            clicked = true;  // 標記為已點擊，避免繼續執行
-                            return;  // 退出內層迴圈
-                        }
-                    });
-                });
-            }
+    const zoneList = document.querySelector(`#${label.getAttribute('data-id')}`);
+    if (!zoneList) return;
+    zoneList.querySelectorAll('li a').forEach(seatLabel => {
+        if (clicked) return;
+        if (seats.some(seat => seatLabel.innerText.includes(seat)) && !seatLabel.innerText.includes('已售完')) {
+            // HTMLElement.prototype.click.call(seatLabel);
+            clicked = true;
         }
-    }
+    });
 });
 
-  
+clicked = false;
+
+document.querySelectorAll('.zone-label').forEach(label => {
+    if (clicked)return
+    if (!prices.some(price => label.innerHTML.includes(price))) return;
+
+    const zoneList = document.querySelector(`#${label.getAttribute('data-id')}`);
+    if (!zoneList) return;
+    zoneList.querySelectorAll('li a').forEach(seatLabel => {
+        if (clicked) return;
+        if (!seatLabel.innerText.includes('已售完')) {
+            HTMLElement.prototype.click.call(seatLabel);
+            clicked = true;
+        }
+    });
+});
