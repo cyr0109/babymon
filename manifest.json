@@ -10,32 +10,12 @@
       "js": ["game.js"]
     },
     {
-      "matches": ["https://tixcraft.com/ticket/verify*"], 
-      "js": ["login.js"]
-    },
-    {
       "matches": ["https://tixcraft.com/ticket/area*"], 
       "js": ["seats.js"]
     },
     {
       "matches": ["https://tixcraft.com/ticket/ticket*"], 
       "js": ["ticket.js"]
-    },
-    {
-      "matches": ["https://ticket-training.onrender.com/"], 
-      "js": ["game_test.js"]
-    },
-    {
-      "matches": ["https://ticket-training.onrender.com/presale"], 
-      "js": ["login_test.js"]
-    },
-    {
-      "matches": ["https://ticket-training.onrender.com/progress"], 
-      "js": ["seats_test.js"]
-    },
-    {
-      "matches": ["https://ticket-training.onrender.com/checking*"], 
-      "js": ["ticket_test.js"]
     }
   ]
 }
